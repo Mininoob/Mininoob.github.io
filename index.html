@@ -1,0 +1,236 @@
+<!doctype html>
+<!--
+DIRECTION CONTRACT
+THESIS: The portfolio IS a running simulation — the page proves real-time skill by
+generating everything live; it refuses the static hero-and-cards resume page.
+OWN-WORLD: Void-navy ground lit by coolant cyan, telemetry amber, and rare signal
+magenta; HUD corner brackets and hairline rules; Chakra Petch display over Martian
+Mono console text; every visual rendered live in-browser.
+STORY: A recruiter watches the console boot, reads name and role in seconds,
+inspects module bays and system capabilities, then opens comms.
+FIRST VIEWPORT: Full-bleed rotating dot-matrix Earth (real Natural Earth land
+data) with animated packet routes arcing between world hubs, Texas as the amber
+home node; name centered, role line beneath, OPEN COMMS primary action; live
+telemetry top-right; sine-wave scroller ribbon at the bottom; SKIP visible
+throughout boot.
+FORM: Demoscene crack intro in a research register — grounded candidate 6, fused
+with the generated-screening staging (authored, time-based, skippable); seed key
+c2428c5b.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joshua M Le — Software Engineer · VR, Games &amp; Simulation</title>
+<meta name="description" content="Joshua M Le — software engineer building real-time worlds: virtual reality, games, and simulation. This page renders itself live in your browser.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='none' stroke='%2343F1E4' stroke-width='3' d='M11 4H4v7M21 4h7v7M11 28H4v-7M21 28h7v-7'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%2343F1E4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Martian+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Boot overlay: shown by JS only; skippable; never traps no-JS visitors -->
+<div id="boot" aria-hidden="true">
+  <pre id="boot-log"></pre>
+  <button id="boot-skip" type="button">SKIP ▸</button>
+</div>
+
+<!-- Live scene: decorative; all facts live in the DOM below -->
+<canvas id="sim" aria-hidden="true"></canvas>
+
+<header class="hud-bar">
+  <span class="hud-id"><span class="led" aria-hidden="true"></span>JML-01</span>
+  <nav aria-label="Sections">
+    <a href="#modules">Modules</a>
+    <a href="#systems">Systems</a>
+    <a href="#comms">Comms</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============ PART 1 · HERO ============ -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-frame" aria-hidden="true"></div>
+    <p class="sys-label hero-status">Simulation online<span class="cursor" aria-hidden="true">▊</span></p>
+    <h1 class="hero-name">Joshua&nbsp;M&nbsp;Le</h1>
+    <p class="hero-role">Software Engineer — VR · Games · Simulation</p>
+    <p class="hero-pitch">Real people train in software I build — medics in triage sims, responders inside wildfires, defenders on live networks. This page is one of those worlds — every dot, route, and pulse is code running live in your browser.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#comms">Open comms</a>
+      <a class="btn btn-ghost" href="#modules">Inspect modules</a>
+    </div>
+
+    <div class="telemetry sys-label" aria-hidden="true">
+      <span>FPS <b id="t-fps">--</b></span>
+      <span>T+ <b id="t-time">00:00</b></span>
+      <span>RES <b id="t-res">--</b></span>
+      <span>MODE <b id="t-mode">DOM</b></span>
+    </div>
+
+    <div class="scroller" aria-hidden="true">
+      <div id="scroller-track" class="scroller-track">Joshua M Le // software engineer // virtual reality · games · simulation // this page renders itself live — the network globe, its routes, and this scroller are code, not video // scroll to inspect modules // boot intro is skippable — esc or skip // open comms to reach me //&nbsp;</div>
+    </div>
+  </section>
+
+  <!-- ============ PART 2 · MODULES ============ -->
+  <section id="modules" class="part" aria-labelledby="modules-h">
+    <header class="part-head">
+      <p class="sys-label">Part 02 — payload bays</p>
+      <h2 id="modules-h">Simulation modules</h2>
+      <p class="part-sub">Fielded builds and research platforms — simulators, digital twins, and autonomous systems from work at CACI, UTSA SAVE Lab, and NASA MIRO CAMEE.</p>
+    </header>
+
+    <div class="bay-grid">
+      <article class="bay bay-wide">
+        <p class="sys-label bay-state">Module 01 · <span class="live">deployed</span> · CACI International · 2024–present</p>
+        <h3 class="bay-title">Medical Triage Simulator</h3>
+        <p>Core feature work on a triage simulation platform used for live training of medical personnel and for research — performance improved by 50%, with hardened data logging so 100% of research data survives a session.</p>
+      </article>
+      <article class="bay">
+        <p class="sys-label bay-state">Module 02 · <span class="live">fielded</span> · CACI International · internship · 2022–2024</p>
+        <h3 class="bay-title">ACND</h3>
+        <p>Real-time cyber defense dashboard integrating multiple data sources for rapid incident response — with an AI model trained to detect and mitigate attacks on HMI, SCADA, and PLC infrastructure in real time.</p>
+      </article>
+      <article class="bay">
+        <p class="sys-label bay-state">Module 03 · <span class="live">fielded</span> · CACI International · internship · 2022–2024</p>
+        <h3 class="bay-title">Cityblock</h3>
+        <p>Digital-twin security platform that spins up virtual environments for simulation and penetration testing — emulating real hardware with virtual machines, or linking to live hardware and streaming its real-time data into the twin.</p>
+      </article>
+      <article class="bay bay-wide">
+        <p class="sys-label bay-state">Module 04 · <span class="live">research</span> · UTSA SAVE Lab × NASA MIRO CAMEE · 2022</p>
+        <h3 class="bay-title">Project Wildfire</h3>
+        <p>A HoloLens firefighting tool that simulates wildfires from real GIS terrain, vegetation, and weather data — driving plume simulation to project a fire’s spread and path, so the teams fighting it can see what the fire will do next.</p>
+      </article>
+      <article class="bay">
+        <p class="sys-label bay-state">Module 05 · <span class="live">outreach</span> · CACI × Port San Antonio · internship · 2022–2024</p>
+        <h3 class="bay-title">Lego Digital Twin</h3>
+        <p>A live Lego environment captured through photogrammetry into Unity 3D, with real PLC data synced to the virtual scene — a working digital twin built to promote STEM education.</p>
+      </article>
+      <article class="bay">
+        <p class="sys-label bay-state">Module 06 · <span class="live">research</span> · UTSA SAVE Lab · 2022–2023</p>
+        <h3 class="bay-title">VR Cybersickness Prediction</h3>
+        <p>Cybersickness research in two parts: a dataset built by placing participants in a procedurally generated VR maze for 10-minute real-walking sessions — capturing gaze, heart rate, and more — and a predictive model trained on it reaching over 90% accuracy on cognitive and attention analysis.</p>
+      </article>
+      <article class="bay">
+        <p class="sys-label bay-state">Module 07 · <span class="live">research</span> · NASA MIRO CAMEE · 2020–2022</p>
+        <h3 class="bay-title">Autonomous LiDAR Rover + Drone</h3>
+        <p>A fully autonomous platform pairing a 3D-printed rocker-bogie rover with an autonomous drone for LiDAR terrain mapping and data acquisition — with onboard point-cloud processing in ROS.</p>
+      </article>
+      <article class="bay">
+        <p class="sys-label bay-state">Module 08 · <span class="live">research</span> · NASA MIRO CAMEE · 2020–2022</p>
+        <h3 class="bay-title">V-RBNN Coastal Reconnaissance</h3>
+        <p>Coastal reconnaissance research applying the V-RBNN algorithm to LiDAR point clouds with multi-sensor fusion — built in C++ and Python on ROS, optimizing data cleanliness to support coastal survey needs.</p>
+      </article>
+    </div>
+
+  </section>
+
+
+  <!-- ============ PART 3 · OFF-MISSION ============ -->
+  <section id="offmission" class="part" aria-labelledby="offmission-h">
+    <header class="part-head">
+      <p class="sys-label">Part 03 — personal bays</p>
+      <h2 id="offmission-h">Off-mission builds</h2>
+      <p class="part-sub">Personal projects, built off the clock — a game engine, a daily-driver notes app, and a shipped product platform.</p>
+    </header>
+
+    <div class="bay-grid">
+      <article class="bay bay-wide">
+        <p class="sys-label bay-state">Bay P-01 · <span class="live">in development</span> · C++ · Vulkan</p>
+        <h3 class="bay-title">Polymage</h3>
+        <p>A custom game engine written in C++ on Vulkan, purpose-built to power a multiplayer open-world voxel mage game — players explore towns, cities, and dungeons, and team up with friends to take down bosses.</p>
+      </article>
+      <article class="bay">
+        <p class="sys-label bay-state">Bay P-02 · <span class="live">operational</span> · Rust · Tauri 2 · SolidJS</p>
+        <h3 class="bay-title">Pinq</h3>
+        <p>A local-first sticky-note &amp; personal knowledge app for Windows and macOS — always-on-top transparent notes with a screen-edge pull-to-create gesture, an offline-first sync engine built on an append-only action log with version-vector deltas, and end-to-end-encrypted peer-to-peer sync with sub-second co-editing. On-device ONNX embeddings suggest tags and related notes — no note content ever leaves the machine.</p>
+      </article>
+      <article class="bay">
+        <p class="sys-label bay-state">Bay P-03 · <span class="live">shipped</span> · SwiftUI · FastAPI · Docker</p>
+        <h3 class="bay-title">OriginalCopy</h3>
+        <p>A photobooth platform built and shipped end to end — a SwiftUI booth app with live camera capture and Epson thermal receipt printing, a FastAPI backend handling device enrollment, media, telemetry, and multi-tenant auth across five roles, plus guest claim &amp; gallery pages and a live operator dashboard. Runs containerized behind Caddy and nginx with release-based deploys and instant rollback.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PART 4 · SYSTEMS ============ -->
+  <section id="systems" class="part" aria-labelledby="systems-h">
+    <header class="part-head">
+      <p class="sys-label">Part 04 — capability readout</p>
+      <h2 id="systems-h">Systems</h2>
+    </header>
+
+    <ul class="sys-list">
+      <li><span class="sys-name">Simulation development</span><span class="sys-dots" aria-hidden="true"></span><span class="sys-state core">core</span></li>
+      <li><span class="sys-name">Virtual &amp; augmented reality</span><span class="sys-dots" aria-hidden="true"></span><span class="sys-state online">online</span></li>
+      <li><span class="sys-name">Systems programming</span><span class="sys-dots" aria-hidden="true"></span><span class="sys-state online">online</span></li>
+      <li><span class="sys-name">Digital twins &amp; robotics</span><span class="sys-dots" aria-hidden="true"></span><span class="sys-state online">online</span></li>
+      <li><span class="sys-name">Cyber operations &amp; security</span><span class="sys-dots" aria-hidden="true"></span><span class="sys-state online">online</span></li>
+      <li><span class="sys-name">Digital forensics</span><span class="sys-dots" aria-hidden="true"></span><span class="sys-state online">online</span></li>
+    </ul>
+    <p class="fine">Formally trained in cyber operations, cyber security, and digital forensics.</p>
+
+    <div class="manifest">
+      <div class="manifest-row">
+        <span class="sys-label">Languages</span>
+        <p>C · C++ · C# · Rust · Swift · Java · Python · JavaScript · TypeScript · x86 assembly</p>
+      </div>
+      <div class="manifest-row">
+        <span class="sys-label">Toolchain</span>
+        <p>Unity 3D · Vulkan · ROS · SwiftUI · Tauri · FastAPI · React · Docker · Git · Blender · 3ds Max · MATLAB · MySQL · MongoDB · Wireshark · Ghidra · IDA Pro · Sleuth Kit · Autopsy</p>
+      </div>
+    </div>
+
+    <div class="research">
+      <p class="sys-label">Research log</p>
+      <ul class="pub-list">
+        <li><span class="pub-year">2025 · IEEE</span>Predicting and Explaining Cognitive Load, Attention, and Working Memory in Virtual Multitasking</li>
+        <li><span class="pub-year">2024</span>Mazed and Confused: A Dataset of Cybersickness, Working Memory, Mental Load, Physical Load, and Attention During a Real Walking Task in VR</li>
+      </ul>
+    </div>
+
+    <div class="research aux">
+      <p class="sys-label">Support ops — mentorship</p>
+      <p class="aux-body">FIRST Tech Challenge robotics mentor with the Family Service Association of San Antonio (2021–present) — guiding a five-student team to consistent regional-level qualification and helping secure $10,000 in equipment to expand robotics access for under-served communities.</p>
+    </div>
+  </section>
+
+  <!-- ============ PART 5 · COMMS ============ -->
+  <section id="comms" class="part" aria-labelledby="comms-h">
+    <header class="part-head">
+      <p class="sys-label">Part 05 — greetings</p>
+      <h2 id="comms-h">Open a channel</h2>
+      <p class="part-sub">Hiring, collaborating, or just curious how the globe is drawn — the uplink is open.</p>
+    </header>
+
+    <ul class="comms-list">
+      <li>
+        <a class="comm comm-primary" href="mailto:joshuale30@gmail.com">
+          <span class="sys-label">Uplink · email</span>
+          <span class="comm-value">joshuale30@gmail.com</span>
+        </a>
+      </li>
+      <li>
+        <div class="comm comm-offline" aria-label="Resume — not yet available">
+          <span class="sys-label">Document · resume</span>
+          <span class="comm-value"><span class="pending">upload pending</span></span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="close">
+    <p class="sys-label">End of transmission</p>
+    <p>© 2026 Joshua M Le · Texas, US · rendered live, no frameworks</p>
+  </footer>
+
+</main>
+
+<script src="main.js?v=3" defer></script>
+</body>
+</html>
