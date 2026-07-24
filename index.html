@@ -141,9 +141,9 @@ c2428c5b.
 
     <div class="bay-grid">
       <article class="bay bay-wide">
-        <p class="sys-label bay-state">Bay P-01 · <span class="live">in development</span> · C++ · Vulkan</p>
+        <p class="sys-label bay-state">Bay P-01 · <span class="live">in development</span> · C++20 · Vulkan 1.3</p>
         <h3 class="bay-title">Polymage</h3>
-        <p>A custom game engine written in C++ on Vulkan, purpose-built to power a multiplayer open-world voxel mage game — players explore towns, cities, and dungeons, and team up with friends to take down bosses.</p>
+        <p>A low-poly mage action-RPG on a C++20 engine I wrote from scratch over Vulkan 1.3, cross-platform on Windows and macOS. The infinite, seed-based voxel world streams in at 0.25&nbsp;m resolution and renders through a GPU compute-shader raymarcher instead of triangle meshes — which is what gives it caves, overhangs, and its micro-voxel look. The 60&nbsp;Hz ECS simulation (EnTT + Jolt) is deterministic and takes only input command structs, so every run is replay-verifiable — CI replays a command stream and asserts identical results on each commit — and it's structured for networked multiplayer. On top of that runs the game: procedurally generated biomes, dungeons, and towns, a data-driven spell system, loot and equipment, and phase-based boss fights with threat tables and telegraphed attacks.</p>
       </article>
       <article class="bay">
         <p class="sys-label bay-state">Bay P-02 · <span class="live">operational</span> · Rust · Tauri 2 · SolidJS</p>
