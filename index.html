@@ -94,12 +94,12 @@ c2428c5b.
       <article class="bay">
         <p class="sys-label bay-state">Module 02 · <span class="live">fielded</span> · CACI International · internship · 2022–2024</p>
         <h3 class="bay-title">ACND</h3>
-        <p>A real-time cyber defense dashboard that pulls several data sources into a single view so responders can move fast. Behind it sits an AI model we trained to catch and mitigate attacks on HMI, SCADA, and PLC infrastructure while they are happening.</p>
+        <p>A cyber defense dashboard that updates in real time, pulling several data sources into a single view so responders can move fast. Behind it sits an AI model we trained to catch and mitigate attacks on HMI, SCADA, and PLC infrastructure while they are happening.</p>
       </article>
       <article class="bay">
         <p class="sys-label bay-state">Module 03 · <span class="live">fielded</span> · CACI International · internship · 2022–2024</p>
         <h3 class="bay-title">Cityblock</h3>
-        <p>A digital-twin platform that spins up virtual environments for penetration testing and security evaluation. It emulates real hardware with virtual machines, or links to live equipment and streams its data into the twin, so what you test matches what is actually running.</p>
+        <p>A digital twin platform that spins up virtual environments for penetration testing and security evaluation. It emulates real hardware with virtual machines, or links to live equipment and streams its data into the twin, so what you test matches what is actually running.</p>
       </article>
       <article class="bay bay-wide">
         <p class="sys-label bay-state">Module 04 · <span class="live">research</span> · UTSA SAVE Lab × NASA MIRO CAMEE · 2022</p>
@@ -119,12 +119,12 @@ c2428c5b.
       <article class="bay">
         <p class="sys-label bay-state">Module 07 · <span class="live">research</span> · NASA MIRO CAMEE · 2020–2022</p>
         <h3 class="bay-title">Autonomous LiDAR Rover + Drone</h3>
-        <p>A fully autonomous platform that pairs a 3D-printed rocker-bogie rover with a drone for LiDAR terrain mapping. Point-cloud processing runs onboard in ROS.</p>
+        <p>A fully autonomous platform that pairs a 3D printed rocker bogie rover with a drone for LiDAR terrain mapping. The point clouds are processed onboard in ROS.</p>
       </article>
       <article class="bay">
         <p class="sys-label bay-state">Module 08 · <span class="live">research</span> · NASA MIRO CAMEE · 2020–2022</p>
         <h3 class="bay-title">V-RBNN Coastal Reconnaissance</h3>
-        <p>Coastal reconnaissance research applying the V-RBNN algorithm to LiDAR point clouds with multi-sensor fusion. Written in C++ and Python on ROS, aimed at cleaning the data up enough to be useful for survey work.</p>
+        <p>Coastal reconnaissance research applying the V-RBNN algorithm to LiDAR point clouds, fusing several sensors together. Written in C++ and Python on ROS, aimed at cleaning the data up enough to be useful for survey work.</p>
       </article>
     </div>
 
@@ -143,17 +143,17 @@ c2428c5b.
       <article class="bay bay-wide">
         <p class="sys-label bay-state">Bay P-01 · <span class="live">in development</span> · C++20 · Vulkan 1.3</p>
         <h3 class="bay-title">Polymage</h3>
-        <p>A low-poly mage action-RPG running on a C++20 engine I wrote from scratch over Vulkan 1.3, cross-platform on Windows and macOS. The world is infinite, seed-based, and streams in around the player at 0.25&nbsp;m resolution. It renders through a GPU compute-shader raymarcher rather than triangle meshes, which is where the caves, overhangs, and micro-voxel look come from. The 60&nbsp;Hz ECS simulation (EnTT and Jolt) is deterministic and takes nothing but input command structs, so any run can be replayed and checked: CI replays a command stream on every commit and asserts the results come out identical. That also leaves the door open for networked multiplayer. On top of it runs the game itself, with procedurally generated biomes, dungeons, and towns, a data-driven spell system, loot and equipment, and boss fights that shift phases, track threat, and telegraph their heavy attacks.</p>
+        <p>A low poly mage action RPG, running on a C++20 engine I wrote from scratch over Vulkan 1.3 that builds for both Windows and macOS. The world is infinite, grown from a seed, and streams in around the player at 0.25&nbsp;m resolution. Nothing in it is a triangle mesh. A raymarcher running in a GPU compute shader draws the voxels straight, and that is where the caves, overhangs, and blocky detail come from. The 60&nbsp;Hz ECS simulation (EnTT and Jolt) is deterministic and takes nothing but input command structs, so any run can be replayed and checked. CI does exactly that on every commit, replaying a command stream and asserting the results come out identical. It also leaves the door open for networked multiplayer. The game on top has biomes, dungeons, and towns generated procedurally, a spell system driven by data files, loot and equipment, and boss fights that shift phases, track threat, and telegraph their heavy attacks.</p>
       </article>
       <article class="bay">
         <p class="sys-label bay-state">Bay P-02 · <span class="live">operational</span> · Rust · Tauri 2 · SolidJS</p>
         <h3 class="bay-title">Pinq</h3>
-        <p>A local-first sticky-note and knowledge app for Windows and macOS. Notes stay transparent and on top of everything, and you pull a new one out from the edge of the screen. Sync is offline-first, built on an append-only action log with version-vector deltas, and devices reach each other over end-to-end-encrypted peer-to-peer links that keep co-editing under a second. Tag and related-note suggestions come from an ONNX model running on the machine, so note content never leaves it.</p>
+        <p>A notes app for Windows and macOS that keeps everything on your own machine. Notes stay transparent and sit above your other windows, and you pull a fresh one out from the edge of the screen. Sync runs with no server in the middle: every change appends to a log, version vectors work out which deltas a device is missing, and the two machines trade them over a link encrypted end to end. An edit shows up on the other device in under a second. Tag and related note suggestions come from an ONNX model that runs on the device, so nothing you write ever leaves it.</p>
       </article>
       <article class="bay">
         <p class="sys-label bay-state">Bay P-03 · <span class="live">shipped</span> · SwiftUI · FastAPI · Docker</p>
         <h3 class="bay-title">OriginalCopy</h3>
-        <p>A photobooth platform I built and shipped end to end. The booth itself is a SwiftUI app doing live camera capture and thermal receipt printing through the Epson ePOS SDK. Behind it, a FastAPI backend handles device enrollment, media, telemetry, and multi-tenant auth across five roles, with claim and gallery pages for guests and a dashboard operators watch their booths from. It runs containerized behind Caddy and nginx, deployed by release with instant rollback.</p>
+        <p>A photobooth platform I built and shipped end to end. The booth itself is a SwiftUI app doing live camera capture and thermal receipt printing through the Epson ePOS SDK. Behind it, a FastAPI backend handles device enrollment, media, telemetry, and accounts for separate owners across five access roles, with claim and gallery pages for guests and a dashboard operators watch their booths from. It runs containerized behind Caddy and nginx, deployed by release with instant rollback.</p>
       </article>
     </div>
   </section>
@@ -196,7 +196,7 @@ c2428c5b.
 
     <div class="research aux">
       <p class="sys-label">Support ops · mentorship</p>
-      <p class="aux-body">I mentored a five-student FIRST Tech Challenge robotics team with the Family Service Association of San Antonio from 2021 to 2026. They qualified at the regional level year after year. Along the way I helped secure and manage $10,000 in equipment to put robotics in reach of under-served communities.</p>
+      <p class="aux-body">I mentored a FIRST Tech Challenge robotics team of five students with the Family Service Association of San Antonio, from 2021 to 2026. They qualified at the regional level year after year. Along the way I helped secure and manage $10,000 in equipment to put robotics in reach of communities that rarely get it.</p>
     </div>
   </section>
 
