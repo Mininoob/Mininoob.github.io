@@ -13,7 +13,7 @@
   const bootSkip = document.getElementById("boot-skip");
 
   const BOOT_LINES = [
-    "JML/OS v1.0 — simulation console",
+    "JML/OS v1.0 · simulation console",
     "> integrity check ............... OK",
     "> gpu adapter ................... QUERYING",
     "> modules: render input comms ... LOADED",
