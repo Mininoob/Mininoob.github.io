@@ -617,3 +617,111 @@ a.comm:hover {
   .led, .cursor, .bay-scan { animation: none; }
   .scroller-track { transform: none !important; }
 }
+
+/* ============================================================
+   Hologram carousel
+   ============================================================ */
+.holo {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.holo-stage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background:
+    radial-gradient(60% 45% at 50% 82%, rgba(67, 241, 228, 0.1), transparent 70%),
+    rgba(6, 12, 22, 0.55);
+  border: 1px solid var(--cyan-line);
+  overflow: hidden;
+}
+.holo-stage.holo-off { display: none; }
+.holo-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg, rgba(67, 241, 228, 0.05) 0 1px, transparent 1px 4px);
+}
+
+#holo-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.holo-grabbing #holo-canvas { cursor: grabbing; }
+
+.holo-readout {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  margin: 0;
+  pointer-events: none;
+}
+.holo-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  margin: 0;
+  color: var(--ink-dim);
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.holo-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 52px;
+  background: rgba(6, 10, 20, 0.6);
+  border: 1px solid var(--cyan-line);
+  color: var(--cyan);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.holo-nav:hover { background: rgba(67, 241, 228, 0.12); border-color: var(--cyan); }
+.holo-prev { left: 10px; }
+.holo-next { right: 10px; }
+
+.holo-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.holo-tabs [role="tab"] {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  background: none;
+  border: 1px solid transparent;
+  border-bottom-color: rgba(67, 241, 228, 0.18);
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.holo-tabs [role="tab"]:hover { color: var(--cyan); }
+.holo-tabs [role="tab"][aria-selected="true"] {
+  color: var(--void);
+  background: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.holo-panel { min-height: 1px; }
+.holo-panel[hidden] { display: none; }
+
+@media (max-width: 860px) {
+  .holo { grid-template-columns: 1fr; }
+  .holo-stage { max-width: 420px; margin: 0 auto; width: 100%; }
+  .holo-nav { width: 44px; }
+}
