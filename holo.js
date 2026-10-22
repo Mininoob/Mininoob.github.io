@@ -83,7 +83,7 @@
     const base = ringPts(0, 0.5, 0, 0.36, 7, "xz");
     chain(V, 0, brim, true);
     chain(V, 0, base, true);
-    for (const p of base) seg(V, 0, p, [0, 1.16, 0]);
+    for (const p of base) seg(V, 0, p, [0, 1.02, 0]);
     for (let i = 0; i < brim.length; i++) seg(V, 0, brim[i], base[i]);
     // head
     boxEdges(V, 0, 0, 0.26, 0, 0.17, 0.16, 0.15);
@@ -96,8 +96,8 @@
     // arm reaching to the staff
     seg(V, 0, [0.2, 0.02, 0.05], [0.47, 0.22, 0.12]);
     // staff and orb
-    seg(V, 0, [0.56, -0.95, 0.12], [0.56, 0.82, 0.12]);
-    const o = [0.56, 0.98, 0.12];
+    seg(V, 0, [0.54, -0.95, 0.12], [0.54, 0.74, 0.12]);
+    const o = [0.54, 0.88, 0.12];
     circle(V, 1, o[0], o[1], o[2], 0.18, 11, "xy");
     circle(V, 1, o[0], o[1], o[2], 0.18, 11, "xz");
     circle(V, 1, o[0], o[1], o[2], 0.18, 11, "zy");
@@ -141,124 +141,170 @@
   }
 
   function mOriginalCopy(V) {
-    // cabinet
-    boxEdges(V, 0, 0, -0.22, 0, 0.5, 0.6, 0.38);
-    // roof, overhanging
-    boxEdges(V, 0, 0, 0.47, 0, 0.58, 0.07, 0.46);
-    // the opening on the front face
-    rect(V, 0, -0.34, -0.8, 0.34, 0.3, 0.38);
-    // curtain, gathered across the top of the opening
-    for (let i = 0; i <= 7; i++) {
-      const x = -0.34 + (i / 7) * 0.68;
-      const pts = [];
-      for (let j = 0; j <= 6; j++) {
-        const t = j / 6;
-        pts.push([x + Math.sin(t * 3.4 + i * 1.1) * 0.03, 0.3 - t * 0.52, 0.38]);
-      }
-      chain(V, 0, pts, false);
-    }
-    seg(V, 0, [-0.34, -0.22, 0.38], [0.34, -0.22, 0.38]);
-    // bench inside
-    seg(V, 0, [-0.3, -0.52, 0.3], [0.3, -0.52, 0.3]);
-    seg(V, 0, [-0.3, -0.52, 0.3], [-0.3, -0.52, -0.1]);
-    seg(V, 0, [0.3, -0.52, 0.3], [0.3, -0.52, -0.1]);
-    seg(V, 0, [-0.3, -0.52, -0.1], [0.3, -0.52, -0.1]);
-    // camera looking out of the booth
-    circle(V, 1, 0, -0.02, 0.2, 0.13, 12, "xy");
-    circle(V, 1, 0, -0.02, 0.28, 0.07, 10, "xy");
-    seg(V, 1, [0, -0.02, 0.2], [0, -0.02, 0.28]);
-    // photo strip, floating clear of the booth
-    const sx = 0.92, st = 0.14;
-    const strip = [[sx - st, -0.46, 0.1], [sx + st, -0.4, 0.1], [sx + st, 0.72, 0.1], [sx - st, 0.66, 0.1]];
-    chain(V, 1, strip, true);
-    for (let i = 1; i < 4; i++) {
-      const t = i / 4;
-      seg(V, 1, [sx - st, -0.46 + t * 1.12, 0.1], [sx + st, -0.4 + t * 1.12, 0.1]);
-    }
+    // tall rounded cabinet, built from a front and back profile
+    const hw = 0.36, hh = 0.8, hz = 0.27, r = 0.12;
+    const front = roundedRect(0, -0.1, hz, hw, hh, r, 3);
+    const back = roundedRect(0, -0.1, -hz, hw, hh, r, 3);
+    chain(V, 0, front, true);
+    chain(V, 0, back, true);
+    for (let i = 0; i < front.length; i++) seg(V, 0, front[i], back[i]);
+    // the screen, inset into the front face
+    const bez = roundedRect(0, 0.02, hz + 0.012, hw - 0.07, hh - 0.26, 0.08, 3);
+    chain(V, 0, bez, true);
+    const scr = roundedRect(0, 0.02, hz + 0.022, hw - 0.1, hh - 0.3, 0.06, 3);
+    chain(V, 1, scr, true);
+    for (let i = 0; i < bez.length; i += 2) seg(V, 0, bez[i], scr[i]);
+    // camera above the screen
+    circle(V, 1, 0, hh - 0.32, hz + 0.03, 0.035, 8, "xy");
+    // print slot near the bottom of the front
+    rect(V, 1, -0.17, -0.74, 0.17, -0.63, hz + 0.012);
+    rect(V, 0, -0.2, -0.78, 0.2, -0.59, hz + 0.004);
+    seg(V, 0, [-0.17, -0.74, hz + 0.012], [-0.17, -0.74, hz - 0.05]);
+    seg(V, 0, [0.17, -0.74, hz + 0.012], [0.17, -0.74, hz - 0.05]);
+    seg(V, 0, [-0.17, -0.63, hz + 0.012], [-0.17, -0.63, hz - 0.05]);
+    seg(V, 0, [0.17, -0.63, hz + 0.012], [0.17, -0.63, hz - 0.05]);
   }
 
   function mPerform(V) {
-    // a foldable phone opened like a book
-    const ang = 0.32, w = 0.62, h = 0.84;
-    for (const s of [-1, 1]) {
-      const dx = Math.cos(ang) * w, dz = Math.sin(ang) * w * s;
-      const o = [0, 0, 0], e = [s * dx, 0, -Math.abs(dz)];
-      // panel outline
-      chain(V, 0, [
-        [o[0], -h, o[2]], [e[0], -h, e[2]], [e[0], h, e[2]], [o[0], h, o[2]],
-      ], true);
-      // screen inset
-      const ix = 0.08, iy = 0.1;
-      const a = [o[0] + s * ix * Math.cos(ang), -h + iy, o[2] - ix * Math.abs(Math.sin(ang))];
-      const b = [e[0] - s * ix * Math.cos(ang), -h + iy, e[2] + ix * Math.abs(Math.sin(ang))];
-      chain(V, 1, [a, b, [b[0], h - iy, b[2]], [a[0], h - iy, a[2]]], true);
-      // lines of text on the page
-      for (let i = 0; i < 7; i++) {
-        const y = (h - iy - 0.1) - i * 0.16;
-        const shrink = i === 6 ? 0.45 : 1;
-        seg(V, 0, [a[0], y, a[2]],
-                  [a[0] + (b[0] - a[0]) * shrink, y, a[2] + (b[2] - a[2]) * shrink]);
+    const shrink = (q, f) => {
+      const c = [0, 1, 2].map(k => (q[0][k] + q[1][k] + q[2][k] + q[3][k]) / 4);
+      return q.map(p => [0, 1, 2].map(k => c[k] + (p[k] - c[k]) * f));
+    };
+
+    // open book resting at the base
+    const by = -0.78, bw = 0.98, bd = 0.52, lift = 0.28;
+    for (const sgn of [-1, 1]) {
+      const sp0 = [0, by, -bd], sp1 = [0, by, bd];
+      const op0 = [sgn * bw, by + lift, -bd * 0.9];
+      const op1 = [sgn * bw, by + lift, bd * 0.9];
+      chain(V, 0, [sp0, op0, op1, sp1], true);
+      // the block of pages under the top sheet
+      for (let i = 1; i <= 3; i++) {
+        const d = -i * 0.045;
+        seg(V, 0, [op0[0], op0[1] + d, op0[2]], [op1[0], op1[1] + d, op1[2]]);
+        seg(V, 0, [op0[0], op0[1] + d, op0[2]], [0, by + d, -bd]);
+        seg(V, 0, [op1[0], op1[1] + d, op1[2]], [0, by + d, bd]);
+      }
+      // lines of print
+      for (let i = 1; i <= 4; i++) {
+        const t = i / 5.2;
+        const y = by + lift * t;
+        seg(V, 0, [sgn * bw * t, y, -bd * 0.62], [sgn * bw * t, y, bd * 0.62]);
       }
     }
-    // hinge
-    seg(V, 1, [0, -h, 0], [0, h, 0]);
-    // pages fanning under the hinge
-    for (let i = 1; i <= 3; i++) {
-      const d = i * 0.06;
-      chain(V, 0, arcPts(0, -h - d * 0.5, 0, 0.5 + d, Math.PI * 0.18, Math.PI * 0.82, 10, "xz"), false);
+    seg(V, 1, [0, by, -bd], [0, by, bd]);
+
+    // the foldable, opened like a book above it
+    const py = 0.3, pw = 0.5, pd = 0.34, rise = 0.26;
+    for (const sgn of [-1, 1]) {
+      const quad = [[0, py, -pd], [sgn * pw, py + rise, -pd],
+                    [sgn * pw, py + rise, pd], [0, py, pd]];
+      chain(V, 0, quad, true);
+      // slim body depth
+      const under = quad.map(p => [p[0], p[1] - 0.035, p[2]]);
+      chain(V, 0, under, true);
+      for (let i = 0; i < 4; i++) seg(V, 0, quad[i], under[i]);
+      // the panel of screen
+      const scr = shrink(quad, 0.86);
+      chain(V, 1, scr, true);
+      // interface lines running across the panel
+      for (let i = 1; i <= 4; i++) {
+        const t = i / 5;
+        const a = [scr[0][0] + (scr[1][0] - scr[0][0]) * t,
+                   scr[0][1] + (scr[1][1] - scr[0][1]) * t,
+                   scr[0][2] + (scr[1][2] - scr[0][2]) * t];
+        const b = [scr[3][0] + (scr[2][0] - scr[3][0]) * t,
+                   scr[3][1] + (scr[2][1] - scr[3][1]) * t,
+                   scr[3][2] + (scr[2][2] - scr[3][2]) * t];
+        seg(V, 0, a, b);
+      }
     }
+    // hinge and crease
+    seg(V, 1, [0, py, -pd], [0, py, pd]);
+    seg(V, 0, [0, py - 0.035, -pd], [0, py - 0.035, pd]);
   }
 
   function mVobViewer(V) {
-    // camcorder body
-    boxEdges(V, 0, -0.1, 0.05, 0, 0.42, 0.3, 0.26);
-    // lens barrel out the front
-    for (const [z, r] of [[0.26, 0.2], [0.44, 0.22], [0.58, 0.18]])
-      circle(V, z === 0.58 ? 1 : 0, 0.05, 0.05, z, r, 14, "xy");
-    for (let i = 0; i < 8; i++) {
-      const t = (i / 8) * Math.PI * 2;
-      seg(V, 0, [0.05 + Math.cos(t) * 0.2, 0.05 + Math.sin(t) * 0.2, 0.26],
-                [0.05 + Math.cos(t) * 0.18, 0.05 + Math.sin(t) * 0.18, 0.58]);
+    // body, wider at the back where the disc sits, tapering to the lens
+    const frontZ = 0.26, rearZ = -0.58;
+    const fp = [[-0.2, 0.22, frontZ], [0.2, 0.22, frontZ], [0.2, -0.24, frontZ], [-0.2, -0.24, frontZ]];
+    const rp = [[-0.29, 0.3, rearZ], [0.29, 0.3, rearZ], [0.29, -0.3, rearZ], [-0.29, -0.3, rearZ]];
+    chain(V, 0, fp, true);
+    chain(V, 0, rp, true);
+    for (let i = 0; i < 4; i++) seg(V, 0, fp[i], rp[i]);
+
+    // the lens barrel, the part everyone recognises
+    const lz = [0.26, 0.46, 0.64, 0.78], lr = [0.27, 0.26, 0.24, 0.21];
+    for (let i = 0; i < lz.length; i++)
+      circle(V, i === lz.length - 1 ? 1 : 0, 0, 0.0, lz[i], lr[i], 16, "xy");
+    for (let i = 0; i < 10; i++) {
+      const t = (i / 10) * Math.PI * 2, c = Math.cos(t), sn = Math.sin(t);
+      seg(V, 0, [c * lr[0], sn * lr[0], lz[0]], [c * lr[3], sn * lr[3], lz[3]]);
     }
-    circle(V, 1, 0.05, 0.05, 0.6, 0.1, 12, "xy");
-    // viewfinder on top at the back
-    boxEdges(V, 0, -0.34, 0.42, -0.04, 0.16, 0.09, 0.1);
-    // flip out screen on the left, hinged open
-    const hx = -0.52, sw = 0.46, sh = 0.3, a = 1.15;
-    const p0 = [hx, 0.05, 0.0];
-    const p1 = [hx - Math.cos(a) * sw, 0.05, Math.sin(a) * sw];
-    const quad = [[p0[0], p0[1] - sh, p0[2]], [p1[0], p1[1] - sh, p1[2]],
-                  [p1[0], p1[1] + sh, p1[2]], [p0[0], p0[1] + sh, p0[2]]];
+    circle(V, 1, 0, 0, 0.8, 0.13, 12, "xy");
+    circle(V, 1, 0, 0, 0.82, 0.06, 10, "xy");
+
+    // microphone and shoe along the top
+    for (let i = 0; i < 5; i++) {
+      const z = 0.12 - i * 0.07;
+      seg(V, 0, [-0.12, 0.235 + (0.08 * (0.12 - z)) / 0.7, z], [0.12, 0.235 + (0.08 * (0.12 - z)) / 0.7, z]);
+    }
+
+    // viewfinder sitting up at the back
+    boxEdges(V, 0, 0, 0.4, -0.45, 0.1, 0.09, 0.17);
+    circle(V, 1, 0, 0.4, -0.63, 0.07, 10, "xy");
+
+    // flip out screen, hinged on the left and turned toward you
+    const a = 1.2, sw = 0.54, sh = 0.32, hx = -0.2, hz2 = -0.1;
+    const h0 = [hx, 0.08, hz2], h1 = [hx, 0.08 - 2 * sh, hz2];
+    const e0 = [hx - Math.cos(a) * sw, 0.08, hz2 + Math.sin(a) * sw];
+    const e1 = [e0[0], h1[1], e0[2]];
+    const quad = [h0, e0, e1, h1];
     chain(V, 0, quad, true);
-    const inset = quad.map(q => [q[0] * 0.97 - 0.02, q[1] * 0.78 + 0.01, q[2] * 0.93]);
-    chain(V, 1, inset, true);
-    // grip strap
-    chain(V, 0, arcPts(0.3, 0.05, 0, 0.33, -Math.PI * 0.45, Math.PI * 0.45, 8, "zy"), false);
-    // a mini disc standing beside the camera, turned toward the viewer
-    const dc = [0.74, -0.3, 0.04], tilt = 0.3;
+    const inner = quad.map((p, i) => {
+      const c = [(h0[0] + e0[0] + e1[0] + h1[0]) / 4, (h0[1] + h1[1]) / 2, (h0[2] + e0[2] + e1[2] + h1[2]) / 4];
+      return [c[0] + (p[0] - c[0]) * 0.82, c[1] + (p[1] - c[1]) * 0.78, c[2] + (p[2] - c[2]) * 0.82];
+    });
+    chain(V, 1, inner, true);
+    // the little button column beside the screen
+    for (let i = 0; i < 3; i++) {
+      const t = 0.22 + i * 0.26;
+      const bx = e0[0] + (h0[0] - e0[0]) * 0.06;
+      const bz = e0[2] + (h0[2] - e0[2]) * 0.06;
+      circle(V, 0, bx, 0.08 - 2 * sh * t, bz, 0.035, 8, "xy");
+    }
+
+    // disc door on the right flank
+    circle(V, 0, 0.26, 0.0, -0.22, 0.2, 14, "zy");
+
+    // grip strap on the right
+    chain(V, 0, arcPts(0.24, -0.02, -0.18, 0.3, -Math.PI * 0.42, Math.PI * 0.42, 8, "zy"), false);
+
+    // the mini disc, standing beside the camera
+    const dc = [0.72, -0.34, 0.1], tilt = 0.34;
     const place = (r, t) => [dc[0] + Math.cos(t) * r,
                              dc[1] + Math.sin(t) * r * Math.cos(tilt),
                              dc[2] + Math.sin(t) * r * Math.sin(tilt)];
-    for (const [r, g] of [[0.32, 0], [0.11, 1]]) {
+    for (const [r, g] of [[0.27, 0], [0.23, 0], [0.08, 1]]) {
       const pts = [];
-      for (let i = 0; i < 20; i++) pts.push(place(r, (i / 20) * Math.PI * 2));
+      for (let i = 0; i < 22; i++) pts.push(place(r, (i / 22) * Math.PI * 2));
       chain(V, g, pts, true);
     }
-    for (let i = 0; i < 8; i++) {
-      const t = (i / 8) * Math.PI * 2;
-      seg(V, 0, place(0.11, t), place(0.32, t));
+    for (let i = 0; i < 10; i++) {
+      const t = (i / 10) * Math.PI * 2;
+      seg(V, 0, place(0.08, t), place(0.23, t));
     }
   }
 
   const BUILDERS = [mPolymage, mPinq, mOriginalCopy, mPerform, mVobViewer];
 
   function pad(V) {
-    for (const r of [0.5, 0.7, 0.88]) circle(V, 0, 0, -1.0, 0, r, 40, "xz");
+    for (const r of [0.42, 0.58, 0.72]) circle(V, 0, 0, -1.0, 0, r, 40, "xz");
     for (let i = 0; i < 12; i++) {
       const t = (i / 12) * Math.PI * 2;
       seg(V, i % 3 === 0 ? 1 : 0,
-          [Math.cos(t) * 0.88, -1.0, Math.sin(t) * 0.88],
-          [Math.cos(t) * 0.98, -1.0, Math.sin(t) * 0.98]);
+          [Math.cos(t) * 0.72, -1.0, Math.sin(t) * 0.72],
+          [Math.cos(t) * 0.82, -1.0, Math.sin(t) * 0.82]);
     }
   }
 
@@ -283,7 +329,7 @@
       p.x += sin(a_pos.y * 30.0 + u_glitch * 40.0) * u_glitch * 0.25;
       v_y = a_pos.y; v_depth = p.z; v_glow = a_glow;
       float d = 3.3 - p.z;
-      gl_Position = vec4(p.x * 2.1 / d / u_aspect, (p.y + 0.06) * 2.1 / d, 0.5, 1.0);
+      gl_Position = vec4(p.x * 2.35 / d / u_aspect, (p.y + 0.06) * 2.35 / d, 0.5, 1.0);
     }`;
 
   const FS = `

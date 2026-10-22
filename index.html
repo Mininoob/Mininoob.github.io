@@ -27,7 +27,7 @@ c2428c5b.
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Martian+Mono:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -178,7 +178,7 @@ c2428c5b.
         <div class="holo-panel bay" role="tabpanel" id="holo-panel-3" aria-labelledby="holo-tab-3" tabindex="0" hidden>
           <p class="sys-label bay-state">Bay P-04 · <span class="live">in development</span> · Kotlin · Compose Multiplatform</p>
           <h3 class="bay-title">Perform</h3>
-          <p>An ebook reader for Android that treats a foldable phone like a book, with a small library app for Windows and macOS alongside it. There is no account and no cloud. Your computer is the library, and the phone talks to it directly over your home network, or through Tailscale when you are out. Pairing means scanning a QR code that carries the computer's certificate fingerprint, so a phone ends up trusting exactly one machine. Every book is identified by the SHA-256 of its file, which keeps it recognizable after it moves or gets renamed. Kotlin on both ends: Jetpack Compose and Readium 3 on the phone, Compose Multiplatform with Ktor and SQLite on the desktop.</p>
+          <p>An ebook reader for Android that treats a foldable phone like a book, plus a small library app that runs on Windows and macOS. No account, no cloud. Your computer holds the library and the phone talks to it straight over the home network, or through Tailscale when you are away. You pair them by scanning a QR code carrying the computer's certificate fingerprint, so the phone trusts that one machine and nothing else. Every book is identified by the SHA-256 of its file, which means it stays recognizable after you move it or rename it. Kotlin on both ends: Jetpack Compose and Readium 3 on the phone, Compose Multiplatform with Ktor and SQLite on the desktop.</p>
           <p class="bay-links">
             <a href="https://perform-mininoob.vercel.app" target="_blank" rel="noopener">Visit site</a>
           <a href="https://github.com/Mininoob/Perform" target="_blank" rel="noopener">View source</a>
@@ -187,7 +187,7 @@ c2428c5b.
         <div class="holo-panel bay" role="tabpanel" id="holo-panel-4" aria-labelledby="holo-tab-4" tabindex="0" hidden>
           <p class="sys-label bay-state">Bay P-05 · <span class="live">released</span> · Electron · ffmpeg</p>
           <h3 class="bay-title">VobViewer</h3>
-          <p>A player for old DVD camcorder footage, built for a Sony DCR-DVD405 and working with any disc finalized into the usual VIDEO_TS layout. Browsers and Electron cannot play MPEG-2 or AC-3, so it drives local ffmpeg to convert each recording to H.264 in the background. Scenes become playable one at a time while you watch, and converted copies are cached, so a disc you have opened before loads instantly. Video is deinterlaced and the camcorder's 5.1 mic audio folds down to stereo. The look is half the point: a frameless molded deck with green camcorder menus, a yellow highlight bar, and a library that draws your discs as labeled mini DVDs in binder sleeves.</p>
+          <p>I made this for my own Sony DCR-DVD405, and it opens any camcorder disc finalized to the usual VIDEO_TS layout. Browsers and Electron cannot play MPEG-2 or AC-3, so it drives local ffmpeg and converts each recording to H.264 in the background. Scenes come up one at a time while you watch. Converted copies are cached, so a disc you have opened once loads instantly after that. Video gets deinterlaced, and the 5.1 mic audio folds down to stereo. The look is half the point: a molded plastic deck with green camcorder menus, a yellow highlight bar, and a library that stands your discs up as labeled mini DVDs in binder sleeves.</p>
           <p class="bay-links">
             <a href="https://vobviewer.vercel.app" target="_blank" rel="noopener">Visit site</a>
           <a href="https://github.com/Mininoob/VobViewer" target="_blank" rel="noopener">View source</a>
@@ -271,6 +271,6 @@ c2428c5b.
 </main>
 
 <script src="main.js?v=3" defer></script>
-<script src="holo.js?v=3" defer></script>
+<script src="holo.js?v=6" defer></script>
 </body>
 </html>
