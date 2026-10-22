@@ -1,0 +1,94 @@
+<!--
+  Joshua M Le resume. Edit the text here, then run
+      python3 _resume/build_resume.py
+  to regenerate Joshua_M_Le_Resume.pdf at the repo root.
+
+  Header lines use <p class="role" data-date="..."> and the build script
+  sets the date flush right on the same line (MuPDF ignores table widths).
+  Add data-href to make the right side text a link.
+
+  Writing rules: no em dashes, no colons in prose, few hyphens,
+  bullets open with a verb and never say "I".
+-->
+<style>
+body { font-family: Helvetica, sans-serif; font-size: 9.3pt; line-height: 1.22; color: #1b1f22; }
+p { margin: 0; }
+.name { font-size: 18pt; font-weight: bold; color: #0d2a36; }
+.contact { margin-top: 1pt; color: #3a4247; }
+h2 { font-size: 9.3pt; font-weight: bold; color: #0b5c58; margin: 7pt 0 2.5pt 0; padding-bottom: 1.2pt; border-bottom: 0.6pt solid #9cb9b6; }
+.role { margin-top: 3.5pt; }
+ul { margin: 1pt 0 0 0; padding-left: 11pt; }
+li { margin-bottom: 0.6pt; }
+.meta { color: #3a4247; }
+table { border-collapse: collapse; }
+td { padding: 0 10pt 0 0; vertical-align: top; }
+td.lab { font-weight: bold; }
+a { color: #1b1f22; text-decoration: none; }
+</style>
+
+<p class="name">JOSHUA M LE</p>
+<p class="contact">Houston, Texas · <a href="mailto:joshuale30@gmail.com">joshuale30@gmail.com</a> · <a href="https://mininoob.github.io">mininoob.github.io</a></p>
+
+<h2>SUMMARY</h2>
+<p>Software engineer who builds real-time simulation and autonomous systems. Recent work includes a medical triage training simulator, digital twins for security testing, cyber defense for industrial control systems, and robotics and LiDAR research funded by NASA. Most at home in C++, C#, and Python.</p>
+
+<h2>EXPERIENCE</h2>
+
+<p class="role" data-date="Mar 2024 – Present"><b>Software Engineer</b>, CACI International · San Antonio, Texas</p>
+<ul>
+<li>Build and maintain core features of a medical triage simulator that trains medical personnel and supports research studies.</li>
+<li>Fixed major bugs and sped up the simulation's heaviest code, making it 50% faster so it runs smoothly in the headset.</li>
+<li>Rebuilt how research telemetry gets saved, adding redundant writes so every experiment captures 100% of its data.</li>
+<li>Helped maintain and review the team's Docker setup and Python data ingest scripts.</li>
+</ul>
+
+<p class="role" data-date="Mar 2022 – Mar 2024"><b>Software Engineer Intern</b>, CACI International · San Antonio, Texas</p>
+<ul>
+<li>Led development of a cyber defense dashboard in React, backed by an AI model the team trained to detect and stop attacks on industrial control systems (SCADA, PLC, HMI) as they happen.</li>
+<li>Built a digital twin platform in C# and Unity for penetration testing. It spins up virtual copies of real hardware on virtual machines, or links to live equipment and streams its data.</li>
+<li>Built a Lego digital twin for STEM outreach with Port San Antonio, using photogrammetry and live PLC data.</li>
+</ul>
+
+<p class="role" data-date="Jun 2022 – Dec 2023"><b>Graduate Researcher</b>, UTSA SAVE Lab · San Antonio, Texas</p>
+<ul>
+<li>Helped build a VR cybersickness dataset by recording gaze and heart rate while participants walked a procedurally generated maze for ten minutes. A model trained on it reached over 90% accuracy on cognitive load and attention (IEEE, 2025).</li>
+<li>Built Project Wildfire with NASA MIRO CAMEE, a HoloLens app that combines real GIS terrain, vegetation, and weather data with a plume simulation to predict where a wildfire will spread.</li>
+</ul>
+
+<p class="role" data-date="Nov 2020 – Dec 2022"><b>Undergraduate Researcher</b>, NASA MIRO CAMEE · San Antonio, Texas</p>
+<ul>
+<li>Developed a fully autonomous mapping platform that pairs a 3D printed rover with a drone to collect LiDAR terrain data.</li>
+<li>Applied the V-RBNN algorithm and sensor fusion in ROS to clean LiDAR point clouds for coastal reconnaissance.</li>
+</ul>
+
+<h2>PROJECTS</h2>
+
+<p class="role" data-date="in progress"><b>Polymage</b> <span class="meta">· C++20, Vulkan</span></p>
+<p>Building a game engine from scratch. A GPU compute shader raymarcher renders an infinite streamed voxel world, and the deterministic 60 Hz simulation (EnTT, Jolt) gets replayed by CI on every commit to catch drift.</p>
+
+<p class="role" data-date="shipped"><b>OriginalCopy</b> <span class="meta">· Swift, FastAPI, Docker</span></p>
+<p>Built and shipped a photobooth platform end to end. An iOS app runs the booth's camera and thermal printer, and a FastAPI backend handles device enrollment, telemetry, and owner accounts, deployed in containers with instant rollback.</p>
+
+<p class="role" data-date="github.com/Mininoob/pinq" data-href="https://github.com/Mininoob/pinq"><b><a href="https://github.com/Mininoob/pinq">Pinq</a></b> <span class="meta">· Rust, Tauri, SolidJS</span></p>
+<p>Built a notes app for Windows and macOS that keeps data on the user's own machines. Devices sync directly with no server and end to end encryption, edits land in under a second, and an ML model on the device suggests tags.</p>
+
+<h2>SKILLS</h2>
+<table>
+<tr><td class="lab">Languages</td><td>C++, C, C#, Python, Rust, Swift, Kotlin, JavaScript, TypeScript</td></tr>
+<tr><td class="lab">Simulation</td><td>Unity 3D, Vulkan, ROS, LiDAR, sensor fusion, digital twins, AR/VR (HoloLens), photogrammetry, MATLAB</td></tr>
+<tr><td class="lab">Tools</td><td>Git, Docker, Linux, React, FastAPI, SQLite, MongoDB, MySQL, Wireshark, Ghidra</td></tr>
+</table>
+
+<h2>EDUCATION</h2>
+<p class="role" data-date="May 2023"><b>B.S. Computer Science</b>, University of Texas at San Antonio</p>
+<p>Concentration in Cyber Operations · Minor in Cybersecurity and Digital Forensics · GPA 3.5 · Honors</p>
+
+<h2>PUBLICATIONS</h2>
+<ul>
+<li>“Predicting and Explaining Cognitive Load, Attention, and Working Memory in Virtual Multitasking.” IEEE, 2025.</li>
+<li>“Mazed and Confused: A Dataset of Cybersickness, Working Memory, Mental Load, Physical Load, and Attention During a Real Walking Task in VR.” 2024.</li>
+</ul>
+
+<h2>LEADERSHIP</h2>
+<p class="role" data-date="Jul 2021 – Jul 2026"><b>Mentor</b>, FIRST Tech Challenge · Family Service Association, San Antonio</p>
+<p>Mentored five students in engineering design and programming, leading the team to consistent regional qualifications, and helped secure $10,000 in robotics equipment for underserved communities.</p>
