@@ -27,7 +27,7 @@ c2428c5b.
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Martian+Mono:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -136,7 +136,7 @@ c2428c5b.
     <header class="part-head">
       <p class="sys-label">Part 03 · personal bays</p>
       <h2 id="offmission-h">Off-mission builds</h2>
-      <p class="part-sub">Personal projects, built off the clock: a game engine, a notes app I use every day, and a product platform that shipped.</p>
+      <p class="part-sub">Personal projects, built off the clock: a game engine, a notes app, a photobooth platform, an ebook reader, and a player for old camcorder discs.</p>
     </header>
 
     <div class="bay-grid">
@@ -149,11 +149,33 @@ c2428c5b.
         <p class="sys-label bay-state">Bay P-02 · <span class="live">operational</span> · Rust · Tauri 2 · SolidJS</p>
         <h3 class="bay-title">Pinq</h3>
         <p>A notes app for Windows and macOS that keeps everything on your own machine. Notes stay transparent and sit above your other windows, and you pull a fresh one out from the edge of the screen. Sync runs with no server in the middle: every change appends to a log, version vectors work out which deltas a device is missing, and the two machines trade them over a link encrypted end to end. An edit shows up on the other device in under a second. Tag and related note suggestions come from an ONNX model that runs on the device, so nothing you write ever leaves it.</p>
+        <p class="bay-links">
+          <a href="https://pinq-note.vercel.app" target="_blank" rel="noopener">Visit site</a>
+          <a href="https://github.com/Mininoob/pinq" target="_blank" rel="noopener">View source</a>
+        </p>
       </article>
       <article class="bay">
         <p class="sys-label bay-state">Bay P-03 · <span class="live">shipped</span> · SwiftUI · FastAPI · Docker</p>
         <h3 class="bay-title">OriginalCopy</h3>
         <p>A photobooth platform I built and shipped end to end. The booth itself is a SwiftUI app doing live camera capture and thermal receipt printing through the Epson ePOS SDK. Behind it, a FastAPI backend handles device enrollment, media, telemetry, and accounts for separate owners across five access roles, with claim and gallery pages for guests and a dashboard operators watch their booths from. It runs containerized behind Caddy and nginx, deployed by release with instant rollback.</p>
+      </article>
+      <article class="bay">
+        <p class="sys-label bay-state">Bay P-04 · <span class="live">in development</span> · Kotlin · Compose Multiplatform</p>
+        <h3 class="bay-title">Perform</h3>
+        <p>An ebook reader for Android that treats a foldable phone like a book, with a small library app for Windows and macOS alongside it. There is no account and no cloud. Your computer is the library, and the phone talks to it directly over your home network, or through Tailscale when you are out. Pairing means scanning a QR code that carries the computer's certificate fingerprint, so a phone ends up trusting exactly one machine. Every book is identified by the SHA-256 of its file, which keeps it recognizable after it moves or gets renamed. Kotlin on both ends: Jetpack Compose and Readium 3 on the phone, Compose Multiplatform with Ktor and SQLite on the desktop.</p>
+        <p class="bay-links">
+          <a href="https://perform-mininoob.vercel.app" target="_blank" rel="noopener">Visit site</a>
+          <a href="https://github.com/Mininoob/Perform" target="_blank" rel="noopener">View source</a>
+        </p>
+      </article>
+      <article class="bay">
+        <p class="sys-label bay-state">Bay P-05 · <span class="live">released</span> · Electron · ffmpeg</p>
+        <h3 class="bay-title">VobViewer</h3>
+        <p>A player for old DVD camcorder footage, built for a Sony DCR-DVD405 and working with any disc finalized into the usual VIDEO_TS layout. Browsers and Electron cannot play MPEG-2 or AC-3, so it drives local ffmpeg to convert each recording to H.264 in the background. Scenes become playable one at a time while you watch, and converted copies are cached, so a disc you have opened before loads instantly. Video is deinterlaced and the camcorder's 5.1 mic audio folds down to stereo. The look is half the point: a frameless molded deck with green camcorder menus, a yellow highlight bar, and a library that draws your discs as labeled mini DVDs in binder sleeves.</p>
+        <p class="bay-links">
+          <a href="https://vobviewer.vercel.app" target="_blank" rel="noopener">Visit site</a>
+          <a href="https://github.com/Mininoob/VobViewer" target="_blank" rel="noopener">View source</a>
+        </p>
       </article>
     </div>
   </section>
